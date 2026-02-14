@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Logical or Creative Thinker Assessment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #d7e1c1;
+            --font-color: #1d32cd;
+            --heading-color: #2854cc;
+            --btn-color: #2854cc;
+            --white: #ffffff;
+            --light-accent: #c2d1a5;
+            --dark-accent: #b8c8a0;
+            --shadow: rgba(40, 84, 204, 0.12);
+            --shadow-strong: rgba(40, 84, 204, 0.22);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--font-color);
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 15% 20%, rgba(40, 84, 204, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 80%, rgba(29, 50, 205, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(40, 84, 204, 0.02) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 24px 20px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 36px;
+            animation: fadeSlideDown 0.7s ease-out;
+        }
+
+        .header-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 18px;
+            background: linear-gradient(135deg, var(--btn-color), #4a6fd8);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 28px var(--shadow-strong);
+            transform: rotate(-3deg);
+        }
+
+        .header-icon svg {
+            width: 38px;
+            height: 38px;
+            fill: var(--white);
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.7rem, 5vw, 2.3rem);
+            font-weight: 800;
+            color: var(--heading-color);
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 1.02rem;
+            color: var(--font-color);
+            opacity: 0.75;
+            font-weight: 400;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            margin-bottom: 30px;
+            animation: fadeSlideDown 0.7s ease-out 0.1s both;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--font-color);
+            opacity: 0.7;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--dark-accent);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--btn-color), #4a6fd8);
+            border-radius: 10px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 0%;
+        }
+
+        /* Card styling */
+        .card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 32px 28px;
+            box-shadow: 0 4px 24px var(--shadow), 0 1px 3px rgba(0,0,0,0.04);
+            animation: fadeSlideUp 0.5s ease-out;
+        }
+
+        .card-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 6px;
+        }
+
+        .card-section-subtitle {
+            font-size: 0.9rem;
+            color: var(--font-color);
+            opacity: 0.6;
+            margin-bottom: 24px;
+        }
+
+        /* Form fields */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--font-color);
+            margin-bottom: 6px;
+            letter-spacing: 0.2px;
+        }
+
+        .form-group label .required {
+            color: #cc2828;
+            margin-left: 2px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--dark-accent);
+            border-radius: 10px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            color: var(--font-color);
+            background: var(--bg-color);
+            transition: border-color 0.25s, box-shadow 0.25s;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--btn-color);
+            box-shadow: 0 0 0 3px rgba(40, 84, 204, 0.12);
+        }
+
+        .form-group input.error {
+            border-color: #cc2828;
+            box-shadow: 0 0 0 3px rgba(204, 40, 40, 0.1);
+        }
+
+        .error-msg {
+            font-size: 0.8rem;
+            color: #cc2828;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .error-msg.show {
+            display: block;
+        }
+
+        /* Question styling */
+        .question-block {
+            display: none;
+        }
+
+        .question-block.active {
+            display: block;
+            animation: fadeSlideUp 0.4s ease-out;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--btn-color), #4a6fd8);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .question-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* Rating scale */
+        .rating-scale {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .rating-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2px;
+        }
+
+        .rating-labels span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--font-color);
+            opacity: 0.55;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rating-options {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .rating-option {
+            flex: 1;
+            max-width: 100px;
+        }
+
+        .rating-option input {
+            display: none;
+        }
+
+        .rating-option label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 8px;
+            border: 2px solid var(--dark-accent);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--bg-color);
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .rating-option label:hover {
+            border-color: var(--btn-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .rating-option input:checked + label {
+            background: linear-gradient(135deg, var(--btn-color), #4a6fd8);
+            border-color: var(--btn-color);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--shadow-strong);
+        }
+
+        .rating-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+        }
+
+        .rating-desc {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-top: 3px;
+            opacity: 0.7;
+        }
+
+        .rating-option input:checked + label .rating-desc {
+            opacity: 1;
+        }
+
+        /* Buttons */
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.3px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--btn-color), #4a6fd8);
+            color: var(--white);
+            box-shadow: 0 4px 16px var(--shadow-strong);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px var(--shadow-strong);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: var(--bg-color);
+            color: var(--font-color);
+            border: 2px solid var(--dark-accent);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--btn-color);
+            background: var(--white);
+        }
+
+        /* Results screen */
+        .results-section {
+            display: none;
+            animation: fadeSlideUp 0.6s ease-out;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        .result-badge {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px var(--shadow-strong);
+            position: relative;
+        }
+
+        .result-badge::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 3px dashed rgba(40, 84, 204, 0.25);
+        }
+
+        .result-badge.logical {
+            background: linear-gradient(135deg, var(--btn-color), #1a3db5);
+        }
+
+        .result-badge.creative {
+            background: linear-gradient(135deg, #6b4fd8, #c44ad8);
+        }
+
+        .result-badge svg {
+            width: 52px;
+            height: 52px;
+            fill: var(--white);
+        }
+
+        .result-category {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 5vw, 2rem);
+            font-weight: 800;
+            color: var(--heading-color);
+            margin-bottom: 6px;
+        }
+
+        .result-person {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--font-color);
+            opacity: 0.65;
+            margin-bottom: 18px;
+        }
+
+        .result-description {
+            font-size: 1.05rem;
+            color: var(--font-color);
+            line-height: 1.65;
+            margin-bottom: 10px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .result-score-display {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-color);
+            padding: 10px 22px;
+            border-radius: 30px;
+            margin-bottom: 28px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .result-score-display .score-num {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--heading-color);
+        }
+
+        .result-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--btn-color), #4a6fd8);
+            border-radius: 10px;
+            margin: 22px auto;
+        }
+
+        .btn-action {
+            display: inline-block;
+            padding: 15px 36px;
+            background: linear-gradient(135deg, var(--btn-color), #4a6fd8);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 12px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            box-shadow: 0 4px 16px var(--shadow-strong);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.3px;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px var(--shadow-strong);
+        }
+
+        .btn-restart {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 10px 24px;
+            background: transparent;
+            border: 2px solid var(--dark-accent);
+            color: var(--font-color);
+            border-radius: 10px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            text-decoration: none;
+        }
+
+        .btn-restart:hover {
+            border-color: var(--btn-color);
+            background: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 36px;
+            font-size: 0.78rem;
+            color: var(--font-color);
+            opacity: 0.4;
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes fadeSlideDown {
+            from { opacity: 0; transform: translateY(-16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.85); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px 14px 32px;
+            }
+
+            .card {
+                padding: 24px 18px;
+                border-radius: 14px;
+            }
+
+            .rating-options {
+                gap: 6px;
+            }
+
+            .rating-option label {
+                padding: 12px 4px;
+                border-radius: 10px;
+            }
+
+            .rating-value {
+                font-size: 1.15rem;
+            }
+
+            .rating-desc {
+                font-size: 0.58rem;
+            }
+
+            .btn-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .result-badge {
+                width: 90px;
+                height: 90px;
+            }
+
+            .result-badge svg {
+                width: 42px;
+                height: 42px;
+            }
+        }
+
+        /* Hide sections */
+        .section { display: none; }
+        .section.active { display: block; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h1>Logical or Creative Thinker</h1>
+        <p>Discover whether your mind favours numbers and logic, or images and colours</p>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-container" id="progressContainer">
+        <div class="progress-label">
+            <span id="progressText">Getting started</span>
+            <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <!-- SECTION 1: Personal Details -->
+    <div class="section active" id="sectionDetails">
+        <div class="card">
+            <div class="card-section-title">Your Details</div>
+            <div class="card-section-subtitle">Tell us a bit about yourself before you begin</div>
+
+            <div class="form-group">
+                <label>Full Name <span class="required">*</span></label>
+                <input type="text" id="userName" placeholder="e.g. Bruce Wade" autocomplete="name">
+                <div class="error-msg" id="nameError">Please enter your name</div>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address <span class="required">*</span></label>
+                <input type="email" id="userEmail" placeholder="e.g. bruce@example.com" autocomplete="email">
+                <div class="error-msg" id="emailError">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-group">
+                <label>Cell Phone <span class="required">*</span></label>
+                <input type="tel" id="userPhone" placeholder="e.g. 082 123 4567" autocomplete="tel">
+                <div class="error-msg" id="phoneError">Please enter your cell phone number</div>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: Questions -->
+    <div class="section" id="sectionQuestions">
+        <div class="card">
+
+            <!-- Question 1 -->
+            <div class="question-block active" id="q1">
+                <span class="question-number">QUESTION 1 OF 5</span>
+                <div class="question-text">When solving a complex problem, do you prefer working with data and step-by-step analysis, or do you rely on gut feeling and mental imagery?</div>
+                <div class="rating-scale">
+                    <div class="rating-labels">
+                        <span>Data &amp; Steps</span>
+                        <span>Imagery &amp; Intuition</span>
+                    </div>
+                    <div class="rating-options">
+                        <div class="rating-option">
+                            <input type="radio" name="q1" id="q1_1" value="1">
+                            <label for="q1_1">
+                                <span class="rating-value">1</span>
+                                <span class="rating-desc">Strongly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q1" id="q1_2" value="2">
+                            <label for="q1_2">
+                                <span class="rating-value">2</span>
+                                <span class="rating-desc">Mostly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q1" id="q1_3" value="3">
+                            <label for="q1_3">
+                                <span class="rating-value">3</span>
+                                <span class="rating-desc">Neutral</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q1" id="q1_4" value="4">
+                            <label for="q1_4">
+                                <span class="rating-value">4</span>
+                                <span class="rating-desc">Mostly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q1" id="q1_5" value="5">
+                            <label for="q1_5">
+                                <span class="rating-value">5</span>
+                                <span class="rating-desc">Strongly</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="nextQuestion(1)" id="btn_q1" disabled>Next →</button>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-block" id="q2">
+                <span class="question-number">QUESTION 2 OF 5</span>
+                <div class="question-text">When explaining an idea to someone, are you more likely to use numbers and facts, or draw a picture or tell a story?</div>
+                <div class="rating-scale">
+                    <div class="rating-labels">
+                        <span>Numbers &amp; Facts</span>
+                        <span>Pictures &amp; Stories</span>
+                    </div>
+                    <div class="rating-options">
+                        <div class="rating-option">
+                            <input type="radio" name="q2" id="q2_1" value="1">
+                            <label for="q2_1">
+                                <span class="rating-value">1</span>
+                                <span class="rating-desc">Strongly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q2" id="q2_2" value="2">
+                            <label for="q2_2">
+                                <span class="rating-value">2</span>
+                                <span class="rating-desc">Mostly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q2" id="q2_3" value="3">
+                            <label for="q2_3">
+                                <span class="rating-value">3</span>
+                                <span class="rating-desc">Neutral</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q2" id="q2_4" value="4">
+                            <label for="q2_4">
+                                <span class="rating-value">4</span>
+                                <span class="rating-desc">Mostly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q2" id="q2_5" value="5">
+                            <label for="q2_5">
+                                <span class="rating-value">5</span>
+                                <span class="rating-desc">Strongly</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-secondary" onclick="prevQuestion(2)">← Back</button>
+                    <button class="btn btn-primary" onclick="nextQuestion(2)" id="btn_q2" disabled>Next →</button>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-block" id="q3">
+                <span class="question-number">QUESTION 3 OF 5</span>
+                <div class="question-text">When you remember a past event, do you recall specific details and sequences, or vivid colours, shapes, and feelings?</div>
+                <div class="rating-scale">
+                    <div class="rating-labels">
+                        <span>Details &amp; Sequences</span>
+                        <span>Colours &amp; Feelings</span>
+                    </div>
+                    <div class="rating-options">
+                        <div class="rating-option">
+                            <input type="radio" name="q3" id="q3_1" value="1">
+                            <label for="q3_1">
+                                <span class="rating-value">1</span>
+                                <span class="rating-desc">Strongly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q3" id="q3_2" value="2">
+                            <label for="q3_2">
+                                <span class="rating-value">2</span>
+                                <span class="rating-desc">Mostly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q3" id="q3_3" value="3">
+                            <label for="q3_3">
+                                <span class="rating-value">3</span>
+                                <span class="rating-desc">Neutral</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q3" id="q3_4" value="4">
+                            <label for="q3_4">
+                                <span class="rating-value">4</span>
+                                <span class="rating-desc">Mostly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q3" id="q3_5" value="5">
+                            <label for="q3_5">
+                                <span class="rating-value">5</span>
+                                <span class="rating-desc">Strongly</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-secondary" onclick="prevQuestion(3)">← Back</button>
+                    <button class="btn btn-primary" onclick="nextQuestion(3)" id="btn_q3" disabled>Next →</button>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-block" id="q4">
+                <span class="question-number">QUESTION 4 OF 5</span>
+                <div class="question-text">When learning something new, do you prefer structured manuals with clear procedures, or exploring through experimentation and visual examples?</div>
+                <div class="rating-scale">
+                    <div class="rating-labels">
+                        <span>Structured Manuals</span>
+                        <span>Visual Exploration</span>
+                    </div>
+                    <div class="rating-options">
+                        <div class="rating-option">
+                            <input type="radio" name="q4" id="q4_1" value="1">
+                            <label for="q4_1">
+                                <span class="rating-value">1</span>
+                                <span class="rating-desc">Strongly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q4" id="q4_2" value="2">
+                            <label for="q4_2">
+                                <span class="rating-value">2</span>
+                                <span class="rating-desc">Mostly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q4" id="q4_3" value="3">
+                            <label for="q4_3">
+                                <span class="rating-value">3</span>
+                                <span class="rating-desc">Neutral</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q4" id="q4_4" value="4">
+                            <label for="q4_4">
+                                <span class="rating-value">4</span>
+                                <span class="rating-desc">Mostly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q4" id="q4_5" value="5">
+                            <label for="q4_5">
+                                <span class="rating-value">5</span>
+                                <span class="rating-desc">Strongly</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-secondary" onclick="prevQuestion(4)">← Back</button>
+                    <button class="btn btn-primary" onclick="nextQuestion(4)" id="btn_q4" disabled>Next →</button>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-block" id="q5">
+                <span class="question-number">QUESTION 5 OF 5</span>
+                <div class="question-text">When making a decision, do you weigh pros and cons in a systematic list, or envision the outcomes as mental pictures of each possibility?</div>
+                <div class="rating-scale">
+                    <div class="rating-labels">
+                        <span>Systematic Lists</span>
+                        <span>Mental Pictures</span>
+                    </div>
+                    <div class="rating-options">
+                        <div class="rating-option">
+                            <input type="radio" name="q5" id="q5_1" value="1">
+                            <label for="q5_1">
+                                <span class="rating-value">1</span>
+                                <span class="rating-desc">Strongly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q5" id="q5_2" value="2">
+                            <label for="q5_2">
+                                <span class="rating-value">2</span>
+                                <span class="rating-desc">Mostly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q5" id="q5_3" value="3">
+                            <label for="q5_3">
+                                <span class="rating-value">3</span>
+                                <span class="rating-desc">Neutral</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q5" id="q5_4" value="4">
+                            <label for="q5_4">
+                                <span class="rating-value">4</span>
+                                <span class="rating-desc">Mostly</span>
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="q5" id="q5_5" value="5">
+                            <label for="q5_5">
+                                <span class="rating-value">5</span>
+                                <span class="rating-desc">Strongly</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-secondary" onclick="prevQuestion(5)">← Back</button>
+                    <button class="btn btn-primary" onclick="showResults()" id="btn_q5" disabled>See My Results ✦</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SECTION 3: Results -->
+    <div class="section" id="sectionResults">
+        <div class="card" style="text-align: center;">
+            <div id="resultBadge" class="result-badge logical">
+                <!-- Logical icon -->
+                <svg id="iconLogical" viewBox="0 0 24 24" style="display:none;"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                <!-- Creative icon -->
+                <svg id="iconCreative" viewBox="0 0 24 24" style="display:none;"><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0112 22zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5a.54.54 0 00-.14-.35c-.41-.46-.63-1.05-.63-1.65a2.5 2.5 0 012.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7zm-5.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm3-4a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm5 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm3 4a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+            </div>
+            <div class="result-category" id="resultCategory">—</div>
+            <div class="result-person" id="resultPerson">—</div>
+            <div class="result-score-display">
+                Your Score: <span class="score-num" id="resultScore">0</span> <span>/ 25</span>
+            </div>
+            <div class="result-divider"></div>
+            <div class="result-description" id="resultDescription">—</div>
+            <div style="margin-top: 28px;">
+                <a href="https://www.brucewade.co.za" target="_blank" class="btn-action" id="actionBtn">Explore More →</a>
+            </div>
+            <div>
+                <button class="btn-restart" onclick="restartAssessment()">↻ Retake Assessment</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">© EM Solutions — Logical or Creative Thinker Assessment</div>
+</div>
+
+<script>
+    // State
+    const totalQuestions = 5;
+    let currentQuestion = 0;
+    let answers = {};
+
+    // Enable next button when a rating is selected
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const qName = this.name;
+            const qNum = qName.replace('q', '');
+            const btn = document.getElementById('btn_' + qName);
+            if (btn) btn.disabled = false;
+            answers[qName] = parseInt(this.value);
+        });
+    });
+
+    function updateProgress(step, total) {
+        const pct = Math.round((step / total) * 100);
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressPercent').textContent = pct + '%';
+
+        if (step === 0) {
+            document.getElementById('progressText').textContent = 'Getting started';
+        } else if (step <= total) {
+            document.getElementById('progressText').textContent = 'Question ' + step + ' of ' + total;
+        }
+    }
+
+    function showSection(id) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function validateDetails() {
+        let valid = true;
+        const name = document.getElementById('userName').value.trim();
+        const email = document.getElementById('userEmail').value.trim();
+        const phone = document.getElementById('userPhone').value.trim();
+
+        // Name
+        if (!name) {
+            document.getElementById('userName').classList.add('error');
+            document.getElementById('nameError').classList.add('show');
+            valid = false;
+        } else {
+            document.getElementById('userName').classList.remove('error');
+            document.getElementById('nameError').classList.remove('show');
+        }
+
+        // Email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+            document.getElementById('userEmail').classList.add('error');
+            document.getElementById('emailError').classList.add('show');
+            valid = false;
+        } else {
+            document.getElementById('userEmail').classList.remove('error');
+            document.getElementById('emailError').classList.remove('show');
+        }
+
+        // Phone
+        if (!phone) {
+            document.getElementById('userPhone').classList.add('error');
+            document.getElementById('phoneError').classList.add('show');
+            valid = false;
+        } else {
+            document.getElementById('userPhone').classList.remove('error');
+            document.getElementById('phoneError').classList.remove('show');
+        }
+
+        return valid;
+    }
+
+    function startAssessment() {
+        if (!validateDetails()) return;
+        currentQuestion = 1;
+        updateProgress(1, totalQuestions);
+        showSection('sectionQuestions');
+        showQuestion(1);
+    }
+
+    function showQuestion(num) {
+        document.querySelectorAll('.question-block').forEach(q => q.classList.remove('active'));
+        document.getElementById('q' + num).classList.add('active');
+    }
+
+    function nextQuestion(current) {
+        if (!answers['q' + current]) return;
+        if (current < totalQuestions) {
+            currentQuestion = current + 1;
+            updateProgress(currentQuestion, totalQuestions);
+            showQuestion(currentQuestion);
+        }
+    }
+
+    function prevQuestion(current) {
+        if (current > 1) {
+            currentQuestion = current - 1;
+            updateProgress(currentQuestion, totalQuestions);
+            showQuestion(currentQuestion);
+        }
+    }
+
+    function showResults() {
+        if (!answers['q' + totalQuestions]) return;
+
+        // Calculate score
+        let totalScore = 0;
+        for (let i = 1; i <= totalQuestions; i++) {
+            totalScore += answers['q' + i] || 0;
+        }
+
+        const name = document.getElementById('userName').value.trim();
+        const email = document.getElementById('userEmail').value.trim();
+
+        // Determine category: 5-15 = Logical, 16-25 = Creative
+        let category, description, badgeClass;
+        if (totalScore <= 15) {
+            category = 'Logical Thinker';
+            description = 'You think with numbers and logic. Your mind excels at systematic analysis, structured reasoning, and finding patterns in data. You approach challenges methodically, preferring clear evidence and step-by-step problem-solving to navigate complexity.';
+            badgeClass = 'logical';
+        } else {
+            category = 'Creative Thinker';
+            description = 'You think in images and colours. Your mind thrives on visual imagination, intuitive leaps, and creative exploration. You see the world through a rich tapestry of mental pictures, finding innovative solutions by connecting ideas in unexpected ways.';
+            badgeClass = 'creative';
+        }
+
+        // Populate results
+        document.getElementById('resultCategory').textContent = category;
+        document.getElementById('resultPerson').textContent = name;
+        document.getElementById('resultScore').textContent = totalScore;
+        document.getElementById('resultDescription').textContent = description;
+
+        const badge = document.getElementById('resultBadge');
+        badge.className = 'result-badge ' + badgeClass;
+
+        if (badgeClass === 'logical') {
+            document.getElementById('iconLogical').style.display = 'block';
+            document.getElementById('iconCreative').style.display = 'none';
+        } else {
+            document.getElementById('iconLogical').style.display = 'none';
+            document.getElementById('iconCreative').style.display = 'block';
+        }
+
+        // Update progress
+        updateProgress(totalQuestions, totalQuestions);
+        document.getElementById('progressText').textContent = 'Complete!';
+        document.getElementById('progressContainer').style.display = 'none';
+
+        showSection('sectionResults');
+    }
+
+    function restartAssessment() {
+        // Reset state
+        answers = {};
+        currentQuestion = 0;
+
+        // Clear radio buttons
+        document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+
+        // Disable all next buttons
+        for (let i = 1; i <= totalQuestions; i++) {
+            const btn = document.getElementById('btn_q' + i);
+            if (btn) btn.disabled = true;
+        }
+
+        // Reset progress
+        document.getElementById('progressContainer').style.display = 'block';
+        updateProgress(0, totalQuestions);
+
+        // Show question 1
+        showQuestion(1);
+
+        // Go to details
+        showSection('sectionDetails');
+    }
+
+    // Live validation — remove error styling on input
+    ['userName', 'userEmail', 'userPhone'].forEach(id => {
+        document.getElementById(id).addEventListener('input', function() {
+            this.classList.remove('error');
+            const errorId = id.replace('user', '').toLowerCase() + 'Error';
+            const errorEl = document.getElementById(errorId);
+            if (errorEl) errorEl.classList.remove('show');
+        });
+    });
+</script>
+
+</body>
+</html>
